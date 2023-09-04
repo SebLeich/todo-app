@@ -9,7 +9,7 @@ import { MarkdownEditorModule } from '../markdown-editor/markdown-editor.module'
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
 import { StoreModule } from '@ngrx/store';
-import { reducer as TodoReducer } from './store/todo.reducer';
+import { reducer as TodoReducer, featureKey } from './store/todo.reducer';
 
 
 
@@ -27,11 +27,11 @@ import { reducer as TodoReducer } from './store/todo.reducer';
     InputModule,
     MarkdownEditorModule,
 
-    StoreModule.forFeature('todo', TodoReducer),
+    StoreModule.forFeature(featureKey, TodoReducer),
 
     RouterModule.forChild([
       { path: 'create', component: CreateTodoComponent },
-      { path: 'edit/:id', component: EditTodoComponent },
+      { path: 'modify/:id', component: EditTodoComponent },
       { path: 'list', component: TodoListComponent },
     ]),
   ]

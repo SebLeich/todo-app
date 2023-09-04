@@ -1,22 +1,22 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { of } from 'rxjs';
 import { Todo } from '../../types/todo.type';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectTodos } from '../../store/todo.selectors';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListComponent {
-	public todos$ = of([
-		{ id: '1', title: 'my todo' } as Todo,
-		{ id: '2', title: 'another todo' } as Todo
-	]);
+	public todos$ = this._store.select(selectTodos);
 
-	constructor(private _router: Router){ }
+	constructor(private _router: Router, private _store: Store){ }
 
 	public showDetails(todo: Todo): void {
-		this._router.navigate(['../edit', todo.id]);
+		this._router.navigate(['todo/modify', todo.id]);
 	}
 }

@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { Todo } from '../types/todo.type';
-import { addTodo } from './todo.actions';
+import { addTodo, updateTodo } from './todo.actions';
 
 export const featureKey = 'todos';
 
@@ -19,12 +19,23 @@ export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>({
   }
   
   export const initialState: State = {
-    ids: [],
-    entities: {}
+    ids: ['1', '2', '3'],
+    entities: {
+      '1': { id: '1', title: 'my todo' } as Todo,
+      '2': { id: '2', title: 'another todo' } as Todo,
+      '3': { id: '3', title: 'something else' } as Todo
+    }
   };
 
 export const reducer = createReducer(
     initialState,
-
     on(addTodo, (state, { todo }) => adapter.addOne(todo, state)),
+    on(updateTodo, (state, { todo }) => adapter.updateOne({
+      id: todo.id,
+      changes: {
+        description: todo.description,
+        isCompleted: todo.isCompleted,
+        title: todo.title,
+      }
+    }, state)),
 );

@@ -1,6 +1,6 @@
 <div class="body main-padding">
   <h1 class="main-padding">
-    <button class="rounded-button" routerLink="../list">
+    <button class="rounded-button" routerLink="/todo/list">
       <span class="material-symbols-outlined">arrow_back</span>
     </button>
 
@@ -8,4 +8,7 @@
   </h1>
 
   <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
+
+  <button class="default" [class.disbled]="formGroup.invalid" (click)="addTodo()">Create todo</button>
+
 </div>
