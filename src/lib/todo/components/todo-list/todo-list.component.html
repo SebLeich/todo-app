@@ -1,0 +1,18 @@
+<div class="body">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Is completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of (todos$|async)" (click)="showDetails(todo)">
+                <td>{{todo.title}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="body" [formGroup]="formGroup">
+
+    <app-input-wrapper label="Enter title">
+        <input type="text" formControlName="title" placeholder="Aa ..." />
+    </app-input-wrapper>
+
+    <app-input-wrapper label="Enter description">
+        <app-markdown-editor class="description-input"></app-markdown-editor>
+    </app-input-wrapper>
+
+    <app-input-wrapper label="Todo is completed">
+        <input type="checkbox" formControlName="isCompleted" />
+    </app-input-wrapper>
+
+    <button>
+        Create todo
+    </button>
+
+</div>

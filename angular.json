@@ -68,7 +68,10 @@
               "browserTarget": "todo-app:build:production"
             },
             "development": {
-              "browserTarget": "todo-app:build:development"
+              "browserTarget": "todo-app:build:development",
+              "sslKey": "ssl/localhost.key",
+              "sslCert": "ssl/localhost.crt",
+              "ssl": true
             }
           },
           "defaultConfiguration": "development"

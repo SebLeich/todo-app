@@ -1,0 +1,5 @@
+@import 'variables.scss';
+
+@mixin border() {
+    border: 1px solid $medium-grey;
+}

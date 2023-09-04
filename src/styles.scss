@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~quill/dist/quill.snow.css';
+@import 'lib/styles/variables.scss', 'lib/styles/inputs.scss', 'lib/styles/spacing.scss', 'lib/styles/font.scss', 'lib/styles/button.scss';
+
+html, body {
+    background-color: $light-grey;
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+}
