@@ -17,10 +17,12 @@ import { Todo } from '../../types/todo.type';
 })
 export class EditTodoComponent implements OnInit {
 	public formGroup: TodoFormGroup = new FormGroup({
-		id: new FormControl<string>('', { nonNullable: true }),
+		id: new FormControl('', { nonNullable: true }),
+		index: new FormControl(0, { nonNullable: true }),
+		created: new FormControl(new Date(), { nonNullable: true }),
 		title: new FormControl<string | null>(null),
 		description: new FormControl<string | null>(null),
-		isCompleted: new FormControl<boolean>(false, { nonNullable: true }),
+		isCompleted: new FormControl(false, { nonNullable: true }),
 	});
 
 	public todo$ = this._route.params.pipe(switchMap((params) => this._store.select(selectTodo(params.id))));
@@ -43,5 +45,7 @@ export class EditTodoComponent implements OnInit {
 
 	public saveTodo(): void {
 		this._store.dispatch(updateTodo(this.formGroup.value as Todo));
+	
+		this._router.navigate(['todo/list']);
 	}
 }

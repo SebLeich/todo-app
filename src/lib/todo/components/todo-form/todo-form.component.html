@@ -5,7 +5,7 @@
     </app-input-wrapper>
 
     <app-input-wrapper label="Enter description">
-        <app-markdown-editor class="description-input"></app-markdown-editor>
+        <app-markdown-editor formControlName="description" class="description-input" [configuration]="{ 'emitOn': ['change'] }"></app-markdown-editor>
     </app-input-wrapper>
 
     <app-input-wrapper label="Todo is completed">

@@ -1,11 +1,14 @@
 <div class="body main-padding">
-  <h1 class="main-padding">
+  <div class="main-padding headline-wrapper">
     <button class="rounded-button" routerLink="/todo/list">
       <span class="material-symbols-outlined">arrow_back</span>
     </button>
 
-    Edit todo <i>{{ todoName$ | async }}</i>
-  </h1>
+    <div class="text-wrapper">
+      <h1>Edit todo <i>{{ todoName$ | async }}</i></h1>
+      <h4>created at {{this.formGroup.controls['created'].value|date:'d. MMMM, HH:mm'}} o'clock</h4>
+    </div>
+  </div>
 
   <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
 

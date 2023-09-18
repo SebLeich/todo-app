@@ -73,7 +73,7 @@ export class MarkdownEditorComponent implements ControlValueAccessor, OnDestroy,
 			key: 13,
 			handler: () => {
 				this.keyDownEnter.emit();
-				return false;
+				return this.configuration.emitOn?.indexOf('enter') === -1;
 			}
 		});
 	}

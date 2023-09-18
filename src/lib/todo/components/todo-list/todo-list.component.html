@@ -1,24 +1,38 @@
 <div class="body main-padding">
 
-    <h1>My todos</h1>
+    <div class="headline-wrapper">
+        <h1>My todos</h1>
+        <button routerLink="/todo/create">add</button>
+    </div>
 
-    <button routerLink="/todo/create">add</button>
+    <div #tableWrapper class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                <tr cdkDrag cdkDragLockAxis="y" *ngFor="let todo of (todos$|async)" [cdkDragPreviewContainer]="tableWrapper" [cdkDragBoundary]="tableWrapper" [cdkDragData]="todo">
+                    <td (click)="showDetails(todo)">
+                        {{todo.isCompleted ? '✅' : '❌'}}
+                    </td>
+                    <td (click)="showDetails(todo)">{{todo.created|date:'d. MMM, HH:mm'}}</td>
+                    <td (click)="showDetails(todo)">{{todo.title}}</td>
+                    <td>
+                        <span class="material-symbols-outlined control" (click)="deleteTodo(todo)">delete</span>
+                    </td>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Is completed</th>
-                <th>Title</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let todo of (todos$|async)" (click)="showDetails(todo)">
-                <td>
-                    <input type="checkbox" [checked]="todo.isCompleted" />
-                </td>
-                <td>{{todo.title}}</td>
-            </tr>
-        </tbody>
-    </table>
+					<div *cdkDragPreview class="row-drag-preview">
+						{{todo.title}}
+					</div>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
 
 </div>

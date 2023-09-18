@@ -5,4 +5,77 @@
     label {
         vertical-align: top;
     }
+
+    .body {
+
+        &.is-checkbox {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 2rem;
+                height: calc(1rem + 4px);
+
+                .slider {
+                    display: block;
+                    width: 2rem;
+                    height: calc(1rem + 4px);
+                    position: relative;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #ccc;
+                    transition: 0.4s;
+                    border-radius: calc(0.5rem + 2px);
+                }
+
+                &.checked {
+                    
+                    .slider{
+                        background-color: #2196F3;
+
+                        &:before {
+                            -webkit-transform: translateX(calc(1rem - 4px));
+                            -ms-transform: translateX(calc(1rem - 4px));
+                            transform: translateX(calc(1rem - 4px));
+                        }
+                    }
+                }
+            }
+
+            label {
+                cursor: pointer !important;
+            }
+
+            ::ng-deep {
+                input {
+                    display: none;
+                    width: 0;
+                    height: 0;
+                }
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: calc(1rem - 4px);
+                width: calc(1rem - 4px);
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                transition: 0.2s;
+                border-radius: 50%;
+            }
+
+            input:focus+.switch {
+                box-shadow: 0 0 1px #2196F3;
+            }
+        }
+    }
 }

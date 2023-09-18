@@ -6,6 +6,15 @@ export const addTodo = createAction(
     (todo: Todo) => ({ todo })
 );
 
+export const deleteTodo = createAction(
+    '[Todo] Delete todos',
+    (todo: Todo) => ({ todo })
+);
+
+export const setTodos = createAction(
+    '[Todo] Set todos',
+    (todos: Todo[]) => ({ todos })
+);
 
 export const updateTodo = createAction(
     '[Todo] Update todo',

@@ -22,5 +22,17 @@ export const selectTodo = (arg: string | null | undefined | (() => string | null
 
 export const selectTodos = createSelector(
     todoState,
-    (state: State) => (state?.entities ? Object.values(state.entities) : []) as Todo[]
+    (state: State) => {
+        const todos = (state?.entities ? Object.values(state.entities) : []) as Todo[];
+        return todos.sort((a, b) => a.index - b.index);
+    }
+);
+
+export const selectNextIndex = createSelector(
+    todoState,
+    (state: State) => {
+        const todos = (state?.entities ? Object.values(state.entities) : []) as Todo[];
+        const maxIndex = todos.reduce((acc, cur) => Math.max(acc, cur.index), 0);
+        return maxIndex + 1;
+    }
 );

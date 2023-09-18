@@ -3,6 +3,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: auto;
+    height: 100%;
 
     > * {
         width: 100%;
@@ -10,7 +12,17 @@
         margin: 0px;
     }
 
-    h1, app-todo-form {
+    .headline-wrapper {
+        background-color: white;
+        display: flex;
+        align-items: baseline;
+
+        .text-wrapper {
+            margin-left: 1rem;
+        }
+    }
+
+    app-todo-form {
         background-color: white;
     }
 
