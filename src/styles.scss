@@ -1,5 +1,5 @@
 @import '~quill/dist/quill.snow.css';
-@import 'lib/styles/variables.scss', 'lib/styles/inputs.scss', 'lib/styles/spacing.scss', 'lib/styles/font.scss', 'lib/styles/button.scss';
+@import 'lib/styles/variables.scss', 'lib/styles/inputs.scss', 'lib/styles/spacing.scss', 'lib/styles/font.scss', 'lib/styles/button.scss', 'lib/styles/box-shadow.scss', 'lib/styles/scroll-bar.scss', 'lib/styles/headers.scss', 'lib/styles/navbar.scss', 'lib/styles/grid.scss';
 
 html, body {
     background-color: $light-grey;
@@ -12,4 +12,13 @@ html, body {
     * {
         font-family: 'Roboto', sans-serif;
     }
+}
+
+.spacer {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
 }

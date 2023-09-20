@@ -31,12 +31,14 @@
     }
 
     &.no-border {
+        border: none !important;
+        
         .ql-toolbar {
-            border: none;
+            border: none !important;
         }
 
         .ql-container {
-            border: none;
+            border: none !important;
         }
     }
 }

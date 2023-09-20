@@ -1,6 +1,9 @@
 :host {
     display: block;
-    margin: 0px 0px 1rem 0px;
+
+    :not(.no-margin) {
+        margin: 0px 0px 1rem 0px;
+    }
 
     label {
         vertical-align: top;
@@ -36,8 +39,8 @@
                 }
 
                 &.checked {
-                    
-                    .slider{
+
+                    .slider {
                         background-color: #2196F3;
 
                         &:before {

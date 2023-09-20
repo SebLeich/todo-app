@@ -1,32 +1,39 @@
 .body {
     width: 100%;
     display: flex;
-    align-items: center;
-    flex-direction: column;
     overflow: auto;
     height: 100%;
 
-    > * {
-        width: 100%;
-        max-width: min(600px, 100vw);
-        margin: 0px;
-    }
-
-    .headline-wrapper {
-        background-color: white;
+    .form-group-wrapper {
         display: flex;
-        align-items: baseline;
+        flex-direction: column;
+        background-color: white;
+
+        > * {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            max-width: min(600px, 100vw);
+            margin: 0px;
+        }
+
+        h4 {
+            margin: 0px !important;
+        }
+    
+        app-todo-form {
+            display: block;
+            flex: 1;
+        }
 
         .text-wrapper {
-            margin-left: 1rem;
+            margin-left: .5rem;
         }
     }
 
-    app-todo-form {
-        background-color: white;
-    }
-
-    app-todo-form {
+    app-comment-list {
         display: block;
+        height: 100%;
+        width: 100%;
     }
 }

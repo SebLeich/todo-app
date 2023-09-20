@@ -1,21 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import Dexie from 'dexie';
+import { DATABASE_CONFIG } from '../constants/database-config.injection-token';
 
 @Injectable()
 export class DatabaseService {
   private _db!: Dexie;
 
-  constructor() {
-    this.initDatabase();
+  constructor(@Inject(DATABASE_CONFIG) private _tableConfig: { [key: string]: string }) {
+    this._initDatabase();
   }
 
   public async getAllAsync<T>(columnName: string): Promise<T[]> {
     return await this._db.table(columnName).toArray() as T[];
-  }
-
-  public initTable(name: string, arg: string | string[]): void {
-    const schema = Array.isArray(arg) ? arg.join(',') : arg;
-    this._db.version(1).stores({ [name]: schema });
   }
 
   public async setDataAsync<T>(columnName: string, updatedValues: T[]): Promise<void> {
@@ -24,7 +20,8 @@ export class DatabaseService {
     collection.bulkAdd(updatedValues);
   }
 
-  private initDatabase() {
+  private _initDatabase() {
     this._db = new Dexie('AppData');
+    this._db.version(1).stores(this._tableConfig);
   }
 }

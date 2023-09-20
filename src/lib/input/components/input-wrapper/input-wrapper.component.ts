@@ -1,13 +1,13 @@
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input-wrapper',
   templateUrl: './input-wrapper.component.html',
   styleUrls: ['./input-wrapper.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputWrapperComponent implements AfterContentInit {
 	@Input() public label: string | undefined;
+  @Input() public noMargin: boolean = false;
 
   public isCheckbox: boolean = false;
 

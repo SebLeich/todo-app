@@ -1,0 +1,20 @@
+<div class="body navbar">
+
+    <nav>
+
+        <a [class.active]="(currentPath$|async) === '/todo/list'" [routerLink]="'/todo/list'">
+            <span class="material-symbols-outlined icon">list</span>
+            <span>Overview</span>
+        </a>
+        <a [class.active]="(currentPath$|async) === '/todo/create'" [routerLink]="'/todo/create'">
+            <span class="material-symbols-outlined icon">local_fire_department</span>
+            <span>Create</span>
+        </a>
+        <a [class.active]="((currentPath$|async) ?? '').startsWith('/todo/modify')">
+            <span class="material-symbols-outlined icon">edit</span>
+            <span>Modify</span>
+        </a>
+
+    </nav>
+
+</div>

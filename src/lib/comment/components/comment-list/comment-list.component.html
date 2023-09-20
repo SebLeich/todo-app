@@ -1,0 +1,38 @@
+<div class="body">
+
+    <div class="content-wrapper box-shadow-rear grid">
+        <pan-zoom [config]="panZoomConfig" class="content" [class.no-messages]="((comments$|async)?.length ?? 0) === 0">
+
+            <ng-container *ngLet="(comments$|async) as comments">
+
+                <ng-container *ngIf="comments?.length ?? 0">
+                    <div id="{{comment.id}}" *ngFor="let comment of comments" class="comment box-shadow-front" [style.left.px]="comment.x" [style.top.px]="comment.y">
+                        <span class="remover" (click)="removeComment(comment)">❌</span>
+                        <div [innerHtml]="comment.content ?? '<p>no text</p>'"></div>
+                    </div>
+                </ng-container>
+
+            </ng-container>
+
+        </pan-zoom>
+    </div>
+
+    <div class="footer box-shadow-front">
+
+        <app-input-wrapper [noMargin]="true">
+            <div style="height: 200px;">
+                <app-markdown-editor [formControl]="formControl" class="description-input"
+                    [configuration]="{ 'emitOn': ['change'], 'noBorder': true }"></app-markdown-editor>
+            </div>
+        </app-input-wrapper>
+
+        <div class="control-wrapper">
+            <button class="button tertiary" (click)="clear()">Clear</button>
+            <div class="spacer"></div>
+            <button class="button primary" (click)="postComment()">Post</button>
+        </div>
+
+    </div>
+
+</div>
+

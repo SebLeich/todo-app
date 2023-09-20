@@ -1,26 +1,30 @@
-<div class="body main-padding">
+<div @show class="body main-padding">
 
     <div class="headline-wrapper">
         <h1>My todos</h1>
-        <button routerLink="/todo/create">add</button>
+        <button class="button primary" routerLink="/todo/create">Create</button>
     </div>
 
     <div #tableWrapper class="table-wrapper">
-        <table>
+        <table *ngIf="todoLoadingIndicator.todosLoaded(); else loading">
             <thead>
                 <tr>
                     <th>Status</th>
                     <th>Created</th>
+                    <th>Attachements</th>
                     <th>Title</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody cdkDropList (cdkDropListDropped)="drop($event)">
-                <tr cdkDrag cdkDragLockAxis="y" *ngFor="let todo of (todos$|async)" [cdkDragPreviewContainer]="tableWrapper" [cdkDragBoundary]="tableWrapper" [cdkDragData]="todo">
+                <tr class="box-shadow-front" cdkDrag cdkDragLockAxis="y" *ngFor="let todo of (todos$|async)" [cdkDragPreviewContainer]="tableWrapper" [cdkDragBoundary]="tableWrapper" [cdkDragData]="todo">
                     <td (click)="showDetails(todo)">
                         {{todo.isCompleted ? '✅' : '❌'}}
                     </td>
                     <td (click)="showDetails(todo)">{{todo.created|date:'d. MMM, HH:mm'}}</td>
+                    <td>
+                        {{todo.id|todoAttachements|async}}
+                    </td>
                     <td (click)="showDetails(todo)">{{todo.title}}</td>
                     <td>
                         <span class="material-symbols-outlined control" (click)="deleteTodo(todo)">delete</span>
@@ -36,3 +40,11 @@
     </div>
 
 </div>
+
+<ng-template #loading>
+
+    <div @show class="loading-spinner-wrapper">
+        <div class="loading-spinner"></div>
+    </div>
+
+</ng-template>

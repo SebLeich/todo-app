@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
 import { v4 as generateGuid } from 'uuid';
 import { firstValueFrom } from 'rxjs';
 import { selectNextIndex } from '../../store/todo.selectors';
+import { showAnimation } from 'src/lib/animations/show.animation';
 
 @Component({
   selector: 'app-create-todo',
   templateUrl: './create-todo.component.html',
   styleUrls: ['./create-todo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [showAnimation],
 })
 export class CreateTodoComponent {
 	public formGroup: TodoFormGroup = new FormGroup({

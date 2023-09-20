@@ -1,14 +1,21 @@
-<div class="body main-padding">
-  <h1 class="main-padding">
-    <button class="rounded-button" routerLink="/todo/list">
-      <span class="material-symbols-outlined">arrow_back</span>
-    </button>
+<div @show class="body main-padding">
 
-    Create todo
-  </h1>
+  <div class="form-group-wrapper">
+    <h1 class="main-padding header-wrapper">
+      <button class="rounded-button" routerLink="/todo/list">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
 
-  <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
+      Create todo
+    </h1>
 
-  <button class="default" [class.disbled]="formGroup.invalid" (click)="addTodo()">Create todo</button>
+    <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
+
+    <div class="footer">
+      <button class="button tertiary" [class.disbled]="formGroup.invalid" [routerLink]="'/todo/list'">Cancel</button>
+      <span class="spacer"></span>
+      <button class="button primary" [class.disbled]="formGroup.invalid" (click)="addTodo()">Create todo</button>
+    </div>
+  </div>
 
 </div>

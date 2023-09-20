@@ -1,22 +1,49 @@
+@import '../../../styles/spacing.scss';
+
 .body {
     width: 100%;
     display: flex;
-    align-items: center;
-    flex-direction: column;
     overflow: auto;
     height: 100%;
+    justify-content: center;
 
-    > * {
-        width: 100%;
-        max-width: min(600px, 100vw);
-        margin: 0px;
-    }
-
-    h1, app-todo-form {
+    .form-group-wrapper {
+        width: min(500px, 100%);
+        display: flex;
+        flex-direction: column;
         background-color: white;
+
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+
+            > button {
+                margin-right: $icon-space;
+            }
+        }
+
+        > * {
+            width: 100%;
+            margin: 0px;
+        }
+    
+        app-todo-form {
+            display: block;
+            flex: 1;
+        }
+
+        .text-wrapper {
+            margin-left: .5rem;
+        }
+
+        .footer {
+            display: flex;
+        }
     }
 
-    app-todo-form {
+    app-comment-list {
         display: block;
+        height: 100%;
+        width: 100%;
     }
 }

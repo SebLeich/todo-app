@@ -8,7 +8,7 @@
         <app-markdown-editor formControlName="description" class="description-input" [configuration]="{ 'emitOn': ['change'] }"></app-markdown-editor>
     </app-input-wrapper>
 
-    <app-input-wrapper label="Todo is completed">
+    <app-input-wrapper label="Todo is completed" [noMargin]="true">
         <input type="checkbox" formControlName="isCompleted" />
     </app-input-wrapper>
 

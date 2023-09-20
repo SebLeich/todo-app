@@ -1,5 +1,6 @@
 <div class="body" [ngClass]="{
     'is-checkbox': isCheckbox,
+    'no-margin': noMargin,
 }" (click)="onClick($event)">
 
     <div *ngIf="isCheckbox" class="switch" [class.checked]="input?.checked">

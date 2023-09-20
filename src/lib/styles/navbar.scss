@@ -1,0 +1,42 @@
+@import './color-scheme1.scss', './variables.scss', './spacing.scss'; ;
+
+.navbar {
+    background-color: white;
+    color: $dark-grey;
+    height: 64px;
+    border-bottom: 2px solid #ededed;
+    font-weight: bold;
+
+    a {
+        padding: 0px 1rem;
+        height: 62px;
+        line-height: 64px;
+        vertical-align: middle;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0.6;
+        display: flex;
+        align-items: center;
+        border-bottom: 5px solid transparent;
+
+        > .icon
+        {
+            margin-right: $icon-space;
+            color: $medium-grey;
+            opacity: 0;
+        }
+
+        &.active
+        {
+            opacity: 1;
+            border-bottom: 5px solid $color-primary;
+            box-sizing: border-box;
+
+            > .icon
+            {
+                opacity: 1;
+                transition: opacity border-bottom 2s ease-in-out;
+            }
+        }
+    }
+}

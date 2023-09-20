@@ -1,17 +1,26 @@
-<div class="body main-padding">
-  <div class="main-padding headline-wrapper">
-    <button class="rounded-button" routerLink="/todo/list">
-      <span class="material-symbols-outlined">arrow_back</span>
-    </button>
+<div @show class="body main-padding">
 
-    <div class="text-wrapper">
-      <h1>Edit todo <i>{{ todoName$ | async }}</i></h1>
-      <h4>created at {{this.formGroup.controls['created'].value|date:'d. MMMM, HH:mm'}} o'clock</h4>
+  <div class="form-group-wrapper box-shadow-front">
+    <div class="main-padding headline-wrapper">
+      <button class="rounded-button" routerLink="/todo/list">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
+
+      <div class="text-wrapper">
+        <h1>Edit todo <i>{{ todoName$ | async }}</i></h1>
+        <span>created at {{this.formGroup.controls['created'].value|date:'d. MMMM, HH:mm'}} o'clock</span>
+      </div>
+    </div>
+
+    <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
+
+    <div>
+      <button class="button tertiary" (click)="deleteTodo()">Delete</button>
+      <div class="spacer"></div>
+      <button class="button primary" [class.disbled]="formGroup.invalid" (click)="saveTodo()">Save todo</button>
     </div>
   </div>
 
-  <app-todo-form class="main-padding" [formGroup]="formGroup"></app-todo-form>
-
-  <button class="default" [class.disbled]="formGroup.invalid" (click)="saveTodo()">Save todo</button>
+  <app-comment-list [todoId]="todoId$|async"></app-comment-list>
 
 </div>

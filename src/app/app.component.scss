@@ -1,5 +1,15 @@
 :host {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
+
+    ::ng-deep {
+
+        app-edit-todo,
+        app-todo-list {
+            flex: 1;
+            overflow: hidden;
+        }
+    }
 }
