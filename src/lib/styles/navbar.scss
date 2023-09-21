@@ -5,7 +5,6 @@
     color: $dark-grey;
     height: 64px;
     border-bottom: 2px solid #ededed;
-    font-weight: bold;
 
     a {
         padding: 0px 1rem;
@@ -31,11 +30,12 @@
             opacity: 1;
             border-bottom: 5px solid $color-primary;
             box-sizing: border-box;
+            font-weight: bold;
 
             > .icon
             {
                 opacity: 1;
-                transition: opacity border-bottom 2s ease-in-out;
+                transition: opacity 1s ease-in-out;
             }
         }
     }
